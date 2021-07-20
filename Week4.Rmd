@@ -1,0 +1,33 @@
+---
+title: "Project 4"
+author: "Simran Mallik"
+date: "2/24/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(xlsx)
+```
+```{r}
+
+(hittersAdvanced <- read.csv("AAA-Hitters-Advanced-Week4.csv"))
+
+# wRC. is wRC+
+hittersBatted <- read.csv("AAA-Hitters-Batted-Week4.csv")
+
+
+(hitters <- left_join(hittersAdvanced, hittersBatted, by = "Name") %>%
+  select(Name, OPS, wRC., HR.FB))
+
+(pitchers <- read.csv("AAA-Pitchers-Advanced-Week4.csv") %>%
+    select(Name, xFIP, WHIP, HR.9))
+
+# pitchers: xFIP, WHIP, HR/9
+# hitters: OPS, WRC+, HR/FB
+
+
+write.xlsx(hitters, "2019 AAA Hitters.xlsx")
+write.xlsx(pitchers, "2019 AAA Pitchers.xlsx")
+```

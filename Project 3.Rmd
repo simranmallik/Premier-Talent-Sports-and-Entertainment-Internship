@@ -1,0 +1,46 @@
+---
+title: "Project3"
+author: "Simran Mallik"
+date: "2/18/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(ggplot2)
+library(plotly)
+library(qdap)
+
+```
+```{r}
+hitters <- read.csv("hittersProj3.csv")
+ 
+
+hitters$X2020.Salary <- as.numeric(mgsub(c("$", ","), "", hitters$X2020.Salary))
+
+(highlight <- hitters %>%
+  filter(Name == "Tommy La Stella"))
+
+ggplotly(ggplot(hitters, aes(x = BB., y = X2020.Salary)) + geom_point() + geom_point(data=highlight, aes(x = BB., y = X2020.Salary), color = 'red', size = 2.5) + geom_smooth(method = "lm", se = FALSE) + xlab("BB Score") + ylab("2020 Salary (millions of dollars)") + labs(title = "Salary vs BB Score") + theme_linedraw() + theme(plot.title = element_text(hjust = 0.5, face = "bold")))
+
+
+highlight
+quantile(hitters$X2020.Salary, .5, na.rm = T)
+
+```
+```{r}
+
+# line of best fit shows that LaStella should be making $11,984,528 but he's making $3,250,000
+print(11984528 / 3250000)
+dim(hitters)
+
+relativeToStella <- hitters %>%
+  filter(BB. < .12, X2020.Salary > 3250000)
+
+dim(relativeToStella)
+
+relativeToStella
+
+class(hitters$BB.)
+```

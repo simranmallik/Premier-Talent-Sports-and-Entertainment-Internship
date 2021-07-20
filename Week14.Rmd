@@ -1,0 +1,44 @@
+---
+title: "Week14"
+author: "Simran Mallik"
+date: "5/8/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(ggplot2)
+```
+```{r}
+dataAll <- read.csv("week 14 - Stats.csv")
+data7 <- read.csv("week 14 - 7 players.csv")
+```
+```{r}
+# my stats: p_strikeout, p_era, difference
+ggplot(dataAll, aes(Difference, p_strikeout)) + geom_point()
+ggplot(dataAll, aes(Difference, p_era)) + geom_point()
+```
+```{r}
+data7 <- data7 %>%
+  rename(Difference = Difference..X.variable.)
+```
+```{r}
+ggplot(dataAll, aes(Difference, p_strikeout)) + geom_point() + labs(title = "Strikeout vs Difference in Spin", x = 'Difference in Spin', y = 'Strikeout') + theme(plot.title = element_text(hjust = 0.5))
+ggplot(dataAll, aes(Difference, p_era)) + geom_point() + labs(title = "ERA vs Difference in Spin", x  = 'Difference in Spin', y = 'ERA') + theme(plot.title = element_text(hjust = 0.5))
+
+#ggplot(dataAll, aes(Difference, exit_velocity_avg)) + geom_point() + labs(title = "Average Exit Velocity vs Difference in Spin",  x = 'Difference in Spin', y = 'Average Exit Velocity') + theme(plot.title = element_text(hjust = 0.5))
+#ggplot(dataAll, aes(Difference, z_swing_miss_percent)) + geom_point() + labs(title = "Z Swing Miss Percentage vs Difference in Spin", x = 'Difference in Spin', y = 'Z Swing Miss Percentage') + theme(plot.title = element_text(hjust = 0.5))
+
+
+```
+```{r}
+
+ggplot(data7, aes(Difference, p_strikeout)) + geom_point() + labs(title = "Strikeout vs Difference in Spin", x = 'Difference in Spin', y = 'Strikeout')
+ggplot(data7, aes(Difference, p_era)) + geom_point() + labs(title = "ERA vs Difference in Spin", x  = 'Difference in Spin', y = 'ERA')
+ggplot(data7, aes(Difference, exit_velocity_avg)) + geom_point() + labs(title = "Average Exit Velocity vs Difference in Spin",  x = 'Difference in Spin', y = 'Average Exit Velocity')
+ggplot(data7, aes(Difference, z_swing_miss_percent)) + geom_point() + labs(title = "Z Swing Miss Percentage vs Difference in Spin", x = 'Difference in Spin', y = 'Z Swing Miss Percentage')
+
+
+
+```
