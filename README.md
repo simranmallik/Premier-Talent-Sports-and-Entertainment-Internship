@@ -1,5 +1,4 @@
 # Premier-Talent-Sports-and-Entertainment-Work
-Code and files for individual and group work from my PTSE Analytics Internship. 
 
 Throughout the Spring 2021 semester, I have been interning at Premier Talent Sports and Entertainment (PTSE), a sports agency and entertainment company which represents and supports professional baseball players and personalities in entertainment. The company is run and managed by industry experts such as former major and minor league players, former major league scouts, attorneys, and collegiate starts. PTSE uses analytics to provide information to allow agents to pursue their clients’ interests and help the clients make decisions. I thought this was a unique opportunity because I would attain the chance to apply my analytical skills while gaining knowledge of an industry that I didn’t think I would initially be interested in. 
 
